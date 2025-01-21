@@ -1,7 +1,8 @@
-import { createBrowserRouter } from 'react-router';
-import MainContent from './components/MainContent';
+import { createBrowserRouter } from 'react-router-dom';
+import MainContentLayout from './components/MainContentLayout';
 import App from './App';
 import AppLayout from './AppLayout';
+import MainContentRoutes from './components/MainContentRoutes';
 const routes = [
   {
     path: '/',
@@ -13,7 +14,8 @@ const routes = [
         children: [
           {
             path: '/',
-            element: <MainContent />,
+            element: <MainContentLayout />,
+            children: [{ path: '*', element: <MainContentRoutes /> }],
           },
         ],
       },

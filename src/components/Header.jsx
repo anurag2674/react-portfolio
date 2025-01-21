@@ -1,13 +1,13 @@
 import CloseIcon from '@mui/icons-material/Close';
 import MenuIcon from '@mui/icons-material/Menu';
 import React, { useState } from 'react';
+import { Link } from 'react-router';
 const Header = () => {
   const [pages, setPages] = useState([
-    { name: 'Home', isSelected: true },
-    { name: 'Experience', isSelected: false },
-    { name: 'Projects', isSelected: false },
-    { name: 'Skills', isSelected: false },
-    { name: 'Contact', isSelected: false },
+    { name: 'Home', isSelected: true, path: '/' },
+    { name: 'Experience', isSelected: false, path: '/experience' },
+    { name: 'Projects', isSelected: false, path: '/projects' },
+    { name: 'Contact', isSelected: false, path: '/contact' },
   ]);
   const [isOpen, setOpen] = React.useState(null);
 
@@ -29,15 +29,16 @@ const Header = () => {
         <div className="hidden md:block">
           <div className="flex justify-between items-center gap-3 cursor-pointer ">
             {pages.map((page, idx) => (
-              <div
-                className={`px-3 py-3 font-bold ${
+              <Link
+                to={page.path}
+                className={`px-3 py-2 font-bold ${
                   page.isSelected === true ? 'text-orange-200' : 'text-black'
                 } rounded-sm  hover:underline`}
                 key={idx}
                 onClick={() => handlePageSelect(page.name)}
               >
                 {page.name}
-              </div>
+              </Link>
             ))}
           </div>
         </div>
@@ -48,15 +49,16 @@ const Header = () => {
       {isOpen && (
         <div className="bg-sky-600">
           {pages.map((page, idx) => (
-            <div
-              className={`w-full px-3 py-3 cursor-pointer font-bold ${
+            <Link
+              to={page.path}
+              className={`w-full block px-3 py-3 cursor-pointer font-bold ${
                 page.isSelected === true ? 'text-orange-200' : 'text-black'
-              } rounded-sm  hover:underline`}
+              }  hover:underline`}
               key={idx}
               onClick={() => handlePageSelect(page.name)}
             >
               {page.name}
-            </div>
+            </Link>
           ))}
         </div>
       )}

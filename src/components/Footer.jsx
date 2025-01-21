@@ -2,7 +2,7 @@ import React from 'react';
 import GitHubIcon from '@mui/icons-material/GitHub';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import { GithubURL, LinkedInURL } from '../constants/userLinks';
-const Footer = (_props) => {
+const Footer = () => {
   const date = new Date();
   return (
     <div className="flex justify-between bg-gray-300 p-4">
